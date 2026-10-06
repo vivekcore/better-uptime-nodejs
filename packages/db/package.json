@@ -1,5 +1,5 @@
 {
-  "name": "db",
+  "name": "@repo/db",
   "module": "index.ts",
   "type": "module",
   "private": true,
@@ -16,9 +16,16 @@
     "@prisma/client": "^7.10.0",
     "@prisma/orm-postgres": "^8.0.0-rc.14",
     "dotenv": "^18.0.5",
-    "prisma": "^8.0.0-rc.20"
+    "prisma": "^8.0.0-rc.20",
+    "temporal-polyfill": "^1.0.5"
   },
   "scripts": {
-    "contract:emit": "prisma contract emit"
+    "db:schema": "prisma db schema --db $DATABASE_URL",
+    "db:init": "prisma contract emit && prisma db init --db $DATABASE_URL",
+    "db:verify": "prisma db verify --db $DATABASE_URL"
+  },
+  "exports": {
+    ".": "./src/index.ts"
   }
+
 }
