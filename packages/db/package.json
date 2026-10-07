@@ -15,17 +15,16 @@
   "dependencies": {
     "@prisma/client": "^7.10.0",
     "@prisma/orm-postgres": "^8.0.0-rc.14",
-    "dotenv": "^18.0.5",
+    "dotenv": "^18.0.6",
     "prisma": "^8.0.0-rc.20",
     "temporal-polyfill": "^1.0.5"
   },
   "scripts": {
-    "db:schema": "prisma db schema --db $DATABASE_URL",
-    "db:init": "prisma contract emit && prisma db init --db $DATABASE_URL",
-    "db:verify": "prisma db verify --db $DATABASE_URL"
+    "db:emit": "prisma contract emit",
+    "db:update":"prisma db update",
+    "db:verify": "prisma db verify"
   },
   "exports": {
     ".": "./src/index.ts"
   }
-
 }
