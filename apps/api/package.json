@@ -4,10 +4,11 @@
   "type": "module",
   "private": true,
   "devDependencies": {
+    "@repo/db": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/bun": "latest",
     "@types/express": "^5.0.6",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/db": "workspace:*"
+    "@types/jsonwebtoken": "^9.0.10"
   },
   "peerDependencies": {
     "typescript": "^7"
@@ -15,6 +16,7 @@
   "dependencies": {
     "@types/cors": "^2.8.19",
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
   }
 }

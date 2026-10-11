@@ -5,7 +5,7 @@ const app = express()
 app.use(express.json())
 app.use(cors());
 
-app.post("/website", async(req,res) => {
+app.post("/add-site", async(req,res) => {
     const url = req.body.url;
     if(!url || url !== typeof String){
         return res.json({
@@ -24,7 +24,7 @@ app.post("/website", async(req,res) => {
         data: website
     })
 })
-app.get("/website:id", async(req,res) => {
+app.get("/get-site/:id", async(req,res) => {
     const id = req.params.id
     if(!id || id !== typeof String){
         return res.json({
