@@ -1,47 +1,12 @@
-import express from "express"
-import cors from "cors"
-import {db} from "@repo/db"
-const app = express()
-app.use(express.json())
-app.use(cors());
+import express from "express";
+import RootRouter from "./routes/root.router";
+import { errorHandler } from "./middleware/global.middlewar";
+const app = express();
+app.use(express.json());
 
-app.post("/add-site", async(req,res) => {
-    const url = req.body.url;
-    if(!url || url !== typeof String){
-        return res.json({
-            msessage:"Url is required"
-        })
-    }
-    const website = await db.orm.public.Website.create({
-        url
-    })
-    if(!website){
-        return res.json({
-            message:"Something went wrong"
-        })
-    }
-    return res.status(200).json({
-        data: website
-    })
-})
-app.get("/get-site/:id", async(req,res) => {
-    const id = req.params.id
-    if(!id || id !== typeof String){
-        return res.json({
-            msessage:"Id is required"
-        })
-    }
-    const website = db.orm.public.Website.where({id});
-    if(!website){
-        return res.json({
-            message: "Website isn't added"
-        })
-    }
-    return res.status(200).json({
-        message: website
-    })
-})
+app.use("/api/v1", RootRouter);
+app.use(errorHandler);
 
-app.listen(3000,() => {
-    console.log("Listning at 3000...")
-})
+app.listen(3002, () => {
+  console.log("Listning at 3002...");
+});

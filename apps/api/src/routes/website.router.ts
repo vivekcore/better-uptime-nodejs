@@ -1,8 +1,11 @@
-import Router from "express"
+import { Router } from "express"
 import { auth_middleware } from "../middleware/auth.middleware";
+import { websiteController } from "../controllers/website.controller";
 
-export const website_router = Router();
+const WebsiteRouter:Router = Router();
 
-website_router.post("/add-site", auth_middleware);
-website_router.get("/fetch-sites", auth_middleware);
-website_router.get("/fetch-one/:id", auth_middleware);
+WebsiteRouter.post("/add-site", auth_middleware, websiteController.addSite);
+WebsiteRouter.get("/fetch-sites", auth_middleware, websiteController.fetchAllSites);
+WebsiteRouter.get("/fetch-one/:id", auth_middleware, websiteController.fetchOneSite);
+
+export default WebsiteRouter;

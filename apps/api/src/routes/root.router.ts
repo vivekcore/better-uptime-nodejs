@@ -1,6 +1,10 @@
-import Router from "express";
-import { user_routes } from "./user.router"
+import { Router } from "express";
+import UserRoutes from "./user.router"
+import WebsiteRouter from "./website.router";
 
-export const root_roouter = Router();
+const RootRouter:Router = Router();
 
-root_roouter.get("/user", user_routes);
+RootRouter.use("/user", UserRoutes);
+RootRouter.use("/website", WebsiteRouter);
+
+export default RootRouter;
